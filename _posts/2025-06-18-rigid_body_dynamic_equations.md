@@ -21,6 +21,8 @@ $$
 式中，$(w_x,w_y,w_z)$是动系相对于惯性系的转动角速度在动系上的投影分量，$(F_x,F_y,F_z)$是作用在飞行器上外力的合力矢量在动系上的投影分量。
 #### 航迹轴中的质心动力学方程
 找出速度、角速度和合外力矢量在$Ox_ky_kz_k$上的投影，带入任意动系下的质心动力学方程（式1、2、3）中，可以得到
+
+
 $$
 \begin{align}
 &m\frac{dV}{dt}=Tcos(\alpha+\varphi)-D-mgsin\gamma \\
@@ -28,8 +30,13 @@ $$
 & -mV\frac{d\gamma}{dt}=T[-sin(\alpha+\varphi)cos\mu-cos(\alpha+\varphi)sin\beta sin\mu]+Csin\mu -L cos\mu +mgcos\gamma
 \end{align}
 $$
+
+
 #### 机体轴系中的质心动力学方程
+
 同理可以得到如下方程：
+
+
 $$
 \begin{align}
 & m\{\frac{dV_x}{dt}+V_z(\dot{\theta}cos\phi+\dot{\psi}sin\phi cos\theta)-V_y(-\dot{\theta}sin\phi +\dot{\psi}cos\phi cos\theta)\} \\
@@ -42,13 +49,21 @@ $$
 &=-Tsin\varphi -Dsin\alpha cos\beta  -Csin\alpha sin\beta -Lcos\alpha+mgcos\phi cos\theta
 \end{align}
 $$
+
+
 在探讨飞行器大迎角、大机动运动特性的时候，利用气流系中$V$和机体轴系中的$u,v,w$的转换关系$L_{ba}=L(\alpha,\beta)$，即
+
+
 $$
 u=Vcos\alpha cos\beta\\
 v=Vsin\beta\\
 w=Vsin\alpha cos\beta
 $$
+
+
 相应地得到对时间的导数：
+
+
 $$
 \begin{align}
 &\frac{du}{dt}=\frac{dV}{dt}cos\alpha cos\beta -\frac{d\alpha}{dt}V sin\alpha cos\beta -\frac{d\beta}{dt}Vcos\alpha sin\beta\\
@@ -56,30 +71,53 @@ $$
 &\frac{dw}{dt}=\frac{dV}{dt}sin\alpha cos\beta+\frac{d\alpha}{dt}Vcos \alpha cos\beta-\frac{d\beta}{dt}Vsin\alpha \sin\beta
 \end{align}
 $$
+
+
 ### 飞行器绕质心转动的动力学方程
+
 飞行器的总动量矩可以通过积分得到：
+
+
 $$
 h=\int r\times V \ dm=\int r\ dm\ \times V_o +\int r \ \times (w\times r)\ dm   
 $$
+
+
 当取坐标系原点为质心时，有，
+
+
 $$
 \int r\ dm=0
 $$
+
+
 飞行器的动量矩为：
+
+
 $$
 h=\int r\times (w\times r)\ dm
 $$
+
+
 由
+
+
 $$
 w=w_x i+w_y j+ w_z k\\
 r=x i+ y j +z k
 $$
+
+
 带入化简得到：
+
+
 $$
 h_x=w_x I_x -w_y I_{xy} -w_z I_{zx}\\
 h_y=w_y I_y -w_x I_{xy} -w_z I_{yz}\\
 h_z=w_z I_z -w_x I_{zx} -w_y I_{yz}
 $$
+
+
 其中$I_x,I_y,I_Z,I_{xy},I_{yz},I_{zx}$代表的是惯性积。
 
 #### 固连于飞行器的任意动系中绕质点转动动力学方程
