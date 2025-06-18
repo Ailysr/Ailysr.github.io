@@ -1,9 +1,14 @@
+---
+layout: default
+title: "Ailysr 的个人博客"
+---
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ailysr 的个人博客</title>
+  <title>Ailysr's blog</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -128,48 +133,42 @@
   <div class="container">
     <div class="center">
       <!-- 头像图片，确保 /images/avatar.jpg 存在 -->
-      <img src="/images/avatar.jpg" alt="Ailysr头像" class="avatar">
+      <img src="/images/my-avatar.JPG" alt="Ailysr头像" class="avatar">
       <h1>Ailysr</h1>
-      <p class="desc">热爱编程与分享，专注于前端、后端、AI、开源项目与技术成长。</p>
+      <p class="desc">我的主要关注内容</p>
       <div class="tags">
         <span class="tag">Python</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">前端</span>
-        <span class="tag">机器学习</span>
-        <span class="tag">算法</span>
+        <span class="tag">MATLAB</span>
+        <span class="tag">C++</span>
+        <span class="tag">Flight-Dynamic</span>
+        <span class="tag">Model-Based-Safety-Design</span>
+        <span class="tag">Optimization Algorithm</span>
       </div>
       <div class="social">
-        <a href="mailto:wuchaokang@mail.nwpu.edu.cn" title="邮箱"><i class="fas fa-envelope"></i></a>
+        <a href="mailto:wuchaokang@mail.nwpu.edu.cn" title="email"><i class="fas fa-envelope"></i></a>
         <a href="https://github.com/Ailysr" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         <!-- <a href="#" title="微信"><i class="fab fa-weixin"></i></a> -->
       </div>
     </div>
 
-    <h2>📝 精选文章</h2>
+    <h2>📝 往期精选文章</h2>
     <ul class="post-list">
+      {% for post in site.posts limit:5 %}
       <li>
-        <a class="post-title" href="https://Ailysr.github.io/2025/06/18/my-first-blog.html">我的第一篇博客：Hello World！</a>
-        <span class="post-date">2025-06-18</span>
+        <a class="post-title" href="{{ post.url }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
       </li>
-      <li>
-        <a class="post-title" href="#">用 Jekyll 和 GitHub Pages 搭建个人博客</a>
-        <span class="post-date">2025-06-15</span>
-      </li>
-      <li>
-        <a class="post-title" href="#">算法学习心得分享</a>
-        <span class="post-date">2025-06-10</span>
-      </li>
+    {% endfor %}
     </ul>
 
     <h2>📫 联系方式</h2>
     <div>
       <strong>邮箱：</strong> wuchaokang@mail.nwpu.edu.cn<br>
-      <strong>GitHub：</strong> <a href="https://github.com/Ailysr" target="_blank">Ailysr</a>
       <!-- <strong>微信：</strong> 可用二维码图片或昵称 -->
     </div>
 
-    <div style="margin-top: 36px; color: #888; text-align: center;">
-      分享知识，记录成长，结交朋友。<br>
+    <div style="margin-top: 48px; color: #888; text-align: center;">
+      Learn In Public<br>
       <small>&copy; 2025 Ailysr</small>
     </div>
   </div>
