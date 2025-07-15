@@ -1,2 +1,2 @@
-# tyleransom.github.io
-Repository for Tyler Ransom's academic research website.
+# Ailysr.github.io
+Repository for Chaokang Wu's academic research website.
