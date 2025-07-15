@@ -1,133 +1,161 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MultiState System Reliability Assessment</title>
+<!doctype html>
+<html lang="en">
+  <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MultiState System Reliability Assessment - WuChaokang</title>
+
     <link rel="stylesheet" href="../stylesheets/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <!-- MathJax for mathematical equations -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
-            },
-            svg: {
-                fontCache: 'global'
-            }
-        };
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
     </script>
+
     <style>
-        .blog-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        .blog-header {
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        .blog-title {
-            color: #333;
-            font-size: 2.2em;
-            margin-bottom: 10px;
-        }
-        .blog-date {
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-        .blog-content {
-            color: #444;
-            font-size: 1.1em;
-        }
-        .blog-content h2 {
-            color: #2c3e50;
-            font-size: 1.5em;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            border-left: 4px solid #3498db;
-            padding-left: 15px;
-        }
-        .blog-content h3 {
-            color: #34495e;
-            font-size: 1.3em;
-            margin-top: 25px;
-            margin-bottom: 12px;
-        }
-        .blog-content p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        .blog-content blockquote {
-            background-color: #f8f9fa;
-            border-left: 4px solid #007bff;
-            padding: 15px 20px;
-            margin: 20px 0;
-            font-style: italic;
-            color: #555;
-        }
-        .blog-content ul, .blog-content ol {
-            margin: 15px 0;
-            padding-left: 30px;
-        }
-        .blog-content li {
-            margin-bottom: 8px;
-        }
-        .blog-content strong {
-            color: #2c3e50;
-            font-weight: 600;
-        }
-        .blog-content img {
-            max-width: 100%;
-            height: auto;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .math-formula {
-            text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-        }
-        .challenge-list {
-            background-color: #fff8dc;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #ffa500;
-            margin: 20px 0;
-        }
-        .nav-link {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .nav-link:hover {
-            background-color: #2980b9;
-            color: white;
-        }
+      .blog-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #eee;
+      }
+      .blog-title {
+        color: #333;
+        font-size: 2em;
+        margin-bottom: 10px;
+      }
+      .blog-meta {
+        color: #666;
+        font-size: 0.9em;
+        margin-bottom: 10px;
+      }
+      .blog-content {
+        line-height: 1.6;
+      }
+      .blog-content h2 {
+        color: #2c3e50;
+        font-size: 1.5em;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        border-left: 4px solid #3498db;
+        padding-left: 15px;
+      }
+      .blog-content h3 {
+        color: #34495e;
+        font-size: 1.3em;
+        margin-top: 25px;
+        margin-bottom: 12px;
+      }
+      .blog-content p {
+        margin-bottom: 15px;
+        text-align: justify;
+      }
+      .blog-content blockquote {
+        background-color: #f8f9fa;
+        border-left: 4px solid #007bff;
+        padding: 15px 20px;
+        margin: 20px 0;
+        font-style: italic;
+        color: #555;
+      }
+      .blog-content ul, .blog-content ol {
+        margin: 15px 0;
+        padding-left: 30px;
+      }
+      .blog-content li {
+        margin-bottom: 8px;
+      }
+      .blog-content strong {
+        color: #2c3e50;
+        font-weight: 600;
+      }
+      .blog-content img {
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .challenge-list {
+        background-color: #fff8dc;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #ffa500;
+        margin: 20px 0;
+      }
+      .back-link {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+      .back-link a {
+        color: #0366d6;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .back-link a:hover {
+        text-decoration: underline;
+      }
+      .social-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .blog-content .MathJax {
+        font-size: 1.1em !important;
+      }
+      .blog-content p:has(.MathJax) {
+        text-align: center;
+        margin: 15px 0;
+      }
     </style>
-</head>
-<body>
-    <div class="blog-container">
-        <header class="blog-header">
-            <h1 class="blog-title">MultiState System Reliability Assessment</h1>
-            <div class="blog-date">
-                <i class="fas fa-calendar-alt"></i> July 15, 2025
-            </div>
-        </header>
-        
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Chaokang Wu</h1>
+        <p>Master Student<br>Northwestern Polytechnical University</p>
+        <p>Research Area<br>Safety Design of Aircraft & eVTOL</p>
+    <h3><a href="https://Ailysr.github.io/">Home</a></h3>
+        <h3><a href="https://Ailysr.github.io/research.html">Research</a></h3>
+    <h3><a href="https://Ailysr.github.io/research/CV.pdf">CV</a></h3>  
+        <h3><a href="https://Ailysr.github.io/code.html">Code</a></h3> 
+        <h3><a href="https://Ailysr.github.io/blog.html">Blog</a></h3>
+        <h3><a href="https://Ailysr.github.io/teaching.html">Teaching</a></h3> 
+        <h3><a href="https://Ailysr.github.io/personal.html">Personal</a></h3>
+        <b>Social Media</b><br>
+        <div class="social-row">
+          <a href="mailto:wuchaokang@mail.nwpu.edu.cn" class="author-social" target="_blank"><i class="fas fa-fw fa-envelope"></i> Email</a><br>
+          <a href="https://space.bilibili.com/691970892" target="_blank"><i class="fab fa-fw fa-bilibili"></i> Bilibili</a><br>
+          <a href="http://github.com/Ailysr"><i class="fab fa-fw fa-github"></i> GitHub</a><br>
+          <br>
+        </div>
+        <br>
+
+    <p><b>Contact:</b><br>Northwestern Polytechnical University<br>School of Aeronautics<br>Xi'an, Shaanxi Province<br>China</p>
+    <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </header>
+      <section>
+      
+      <div class="blog-header">
+        <h1 class="blog-title">MultiState System Reliability Assessment</h1>
+        <div class="blog-meta">
+          July 15, 2025 | <span style="color: #0366d6;">Reliability Engineering</span>
+        </div>
+      </div>
+      
         <article class="blog-content">
             <h2>Background</h2>
             
@@ -167,13 +195,18 @@
                 </ol>
             </div>
             
-            <img src="2025-07-15/twoStateComponentPeformance.png" alt="Single Performance Two State Component" style="display: block; margin: 20px auto;">
+            <img src="2025-07-15/twoStateComponentPeformance.png" alt="Single Performance Two State Component">
             
         </article>
         
-        <a href="../blog.html" class="nav-link">
+        <div class="back-link">
+          <a href="../blog.html">
             <i class="fas fa-arrow-left"></i> Back to Blog
-        </a>
+          </a>
+        </div>
+        
+      </section>
     </div>
-</body>
+    <script src="../javascripts/scale.fix.js"></script>
+  </body>
 </html>
