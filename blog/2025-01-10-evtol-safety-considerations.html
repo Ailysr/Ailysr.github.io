@@ -10,6 +10,18 @@
     <link rel="stylesheet" href="../stylesheets/github-light.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 
+    <!-- MathJax for mathematical equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+    </script>
+
     <style>
       .blog-header {
         margin-bottom: 30px;
@@ -72,6 +84,23 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+      }
+      .blog-content img {
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .blog-content .MathJax {
+        font-size: 1.1em !important;
+      }
+      .blog-content p:has(.MathJax) {
+        text-align: center;
+        margin: 15px 0;
       }
     </style>
   </head>
@@ -144,6 +173,16 @@
         <h2>Regulatory Framework</h2>
         
         <p>The certification of eVTOL aircraft requires new approaches to safety assessment. Traditional aircraft certification methods may not fully address the unique characteristics of these vehicles.</p>
+        
+        <img src="../githubPagePhoto.jpg" alt="That's me" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+        
+        <p><strong>Equation test: series exponential system reliability</strong></p>
+        
+        <p>$$R = \prod_{i=1}^{n} R_i$$</p>
+        <p>$$R_i = 1 - F_i$$</p>
+        <p>$$R_i = e^{-\lambda_i t}$$</p>
+        
+        <p>where $\lambda$ is the failure rate of component $i$. $R_i$ is the reliability of component $i$ at time $t$. This equation illustrates the cumulative reliability of a system composed of multiple components, each with its own failure characteristics.</p>
         
         <h3>EASA Special Condition for Small Category VTOL Aircraft</h3>
         
