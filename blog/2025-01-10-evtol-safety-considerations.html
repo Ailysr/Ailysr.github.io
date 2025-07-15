@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>eVTOL Safety Considerations - WuChaokang</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <style>
+      .blog-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #eee;
+      }
+      .blog-meta {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+      .blog-content {
+        line-height: 1.8;
+        font-size: 16px;
+      }
+      .blog-content h2 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        color: #333;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 8px;
+      }
+      .blog-content h3 {
+        margin-top: 25px;
+        margin-bottom: 12px;
+        color: #444;
+      }
+      .blog-content code {
+        background-color: #f6f8fa;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 14px;
+      }
+      .blog-content pre {
+        background-color: #f6f8fa;
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+        border-left: 4px solid #0366d6;
+      }
+      .blog-content pre code {
+        background-color: transparent;
+        padding: 0;
+      }
+      .back-link {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+      .back-link a {
+        color: #0366d6;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .back-link a:hover {
+        text-decoration: underline;
+      }
+      .social-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Chaokang Wu</h1>
+        <p>Master Student<br>Northwestern Polytechnical University</p>
+        <p>Research Area<br>Safety Design of Aircraft & eVTOL</p>
+    <h3><a href="https://Ailysr.github.io/">Home</a></h3>
+        <h3><a href="https://Ailysr.github.io/research.html">Research</a></h3>
+    <h3><a href="https://Ailysr.github.io/research/CV.pdf">CV</a></h3>  
+        <h3><a href="https://Ailysr.github.io/code.html">Code</a></h3> 
+        <h3><a href="https://Ailysr.github.io/blog.html">Blog</a></h3>
+        <h3><a href="https://Ailysr.github.io/teaching.html">Learning</a></h3> 
+        <h3><a href="https://Ailysr.github.io/personal.html">Personal</a></h3>
+        <b>Social Media</b><br>
+        <div class="social-row">
+          <a href="mailto:wuchaokang@mail.nwpu.edu.cn" class="author-social" target="_blank"><i class="fas fa-fw fa-envelope"></i> Email</a><br>
+          <a href="https://space.bilibili.com/691970892" target="_blank"><i class="fab fa-fw fa-bilibili"></i> Bilibili</a><br>
+          <a href="http://github.com/Ailysr"><i class="fab fa-fw fa-github"></i> GitHub</a><br>
+          <br>
+        </div>
+        <br>
+
+    <p><b>Contact:</b><br>Northwestern Polytechnical University<br>School of Aeronautics<br>Xi'an, Shaanxi Province<br>China</p>
+    <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </header>
+      <section>
+      
+      <div class="blog-header">
+        <h1>eVTOL Safety Considerations</h1>
+        <div class="blog-meta">
+          January 10, 2025 | <span style="color: #0366d6;">eVTOL Technology</span>
+        </div>
+      </div>
+      
+      <div class="blog-content">
+        <p>Electric Vertical Take-Off and Landing (eVTOL) aircraft represent a paradigm shift in urban air mobility. As we move towards a future where these aircraft will transport passengers in dense urban environments, safety considerations become paramount.</p>
+        
+        <h2>Key Safety Challenges</h2>
+        
+        <h3>1. Multi-Rotor System Reliability</h3>
+        <p>eVTOL aircraft typically employ distributed electric propulsion systems with multiple rotors. The failure of any single rotor must not compromise the aircraft's ability to land safely.</p>
+        
+        <ul>
+          <li><strong>Redundancy Requirements</strong>: Critical systems need multiple backup options</li>
+          <li><strong>Fault Detection</strong>: Real-time monitoring of rotor performance</li>
+          <li><strong>Graceful Degradation</strong>: Ability to continue operation with reduced capability</li>
+        </ul>
+        
+        <h3>2. Battery Safety and Management</h3>
+        <p>The reliance on electric power introduces unique safety considerations:</p>
+        
+        <pre><code>Battery Management System (BMS) Requirements:
+- Temperature monitoring and control
+- Cell-level voltage monitoring
+- Thermal runaway prevention
+- Emergency power isolation</code></pre>
+        
+        <h3>3. Autonomous Flight Systems</h3>
+        <p>Many eVTOL designs incorporate varying degrees of automation:</p>
+        
+        <ul>
+          <li><strong>Sensor Fusion</strong>: Integration of multiple sensor inputs</li>
+          <li><strong>Fail-Safe Protocols</strong>: Predetermined responses to system failures</li>
+          <li><strong>Human-Machine Interface</strong>: Clear communication of system status</li>
+        </ul>
+        
+        <h2>Regulatory Framework</h2>
+        
+        <p>The certification of eVTOL aircraft requires new approaches to safety assessment. Traditional aircraft certification methods may not fully address the unique characteristics of these vehicles.</p>
+        
+        <h3>EASA Special Condition for Small Category VTOL Aircraft</h3>
+        
+        <p>The European Union Aviation Safety Agency (EASA) has developed special conditions that address:</p>
+        
+        <ol>
+          <li><strong>Novel or unusual design features</strong></li>
+          <li><strong>Operational complexity</strong></li>
+          <li><strong>Integration with existing air traffic systems</strong></li>
+        </ol>
+        
+        <h2>Future Research Directions</h2>
+        
+        <p>My current research focuses on developing quantitative safety assessment methodologies specifically for eVTOL aircraft. This includes:</p>
+        
+        <ul>
+          <li>Risk modeling for distributed propulsion systems</li>
+          <li>Failure mode and effects analysis (FMEA) for electric aircraft</li>
+          <li>Integration of safety considerations into the design process</li>
+        </ul>
+        
+        <h2>Conclusion</h2>
+        
+        <p>The successful integration of eVTOL aircraft into our transportation system depends on our ability to address these safety challenges systematically. Through rigorous analysis, innovative design solutions, and comprehensive testing, we can ensure that these revolutionary aircraft meet the highest safety standards.</p>
+        
+        <hr>
+        
+        <p><em>This post is based on my ongoing research at Northwestern Polytechnical University. For more detailed information about specific safety assessment methodologies, please feel free to contact me.</em></p>
+        
+        <p><strong>References:</strong></p>
+        <ul>
+          <li>EASA Special Condition for Small Category VTOL Aircraft</li>
+          <li>FAA Engineering Brief No. 105, Vertiport Design</li>
+          <li>SAE ARP6583 - eVTOL Aircraft Safety Assessment</li>
+        </ul>
+      </div>
+      
+      <div class="back-link">
+        <a href="../blog.html">← Back to Blog</a>
+      </div>
+      
+      </section>
+    </div>
+    <script src="../javascripts/scale.fix.js"></script>
+  </body>
+</html>
