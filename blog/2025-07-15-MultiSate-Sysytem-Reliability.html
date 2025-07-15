@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiState System Reliability Assessment</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <style>
+        .blog-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .blog-header {
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .blog-title {
+            color: #333;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        .blog-date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .blog-content {
+            color: #444;
+            font-size: 1.1em;
+        }
+        .blog-content h2 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        .blog-content h3 {
+            color: #34495e;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+        .blog-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .blog-content blockquote {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+        }
+        .blog-content ul, .blog-content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        .blog-content li {
+            margin-bottom: 8px;
+        }
+        .blog-content strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .blog-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .math-formula {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .challenge-list {
+            background-color: #fff8dc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ffa500;
+            margin: 20px 0;
+        }
+        .nav-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .nav-link:hover {
+            background-color: #2980b9;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-container">
+        <header class="blog-header">
+            <h1 class="blog-title">MultiState System Reliability Assessment</h1>
+            <div class="blog-date">
+                <i class="fas fa-calendar-alt"></i> July 15, 2025
+            </div>
+        </header>
+        
+        <article class="blog-content">
+            <h2>Background</h2>
+            
+            <p>传统可靠性评估方法在用于解决复杂系统可靠性评估与设计问题时存在许多局限性。传统可靠性理论中，系统只有"完全失效"和"正常工作"两种状态，即系统为被假设为二态系统。显然，这样的假设对于复杂系统而言过于简单，不能真实地反映实际情况。</p>
+            
+            <p>复杂系统往往不仅具有"正常工作"和"完全失效"两种状态，在两者之间往往还有很多种工作（或失效）状态。大型飞机、高分辨率对地观测系统和载人飞船这些复杂系统在工作过程中就呈现出结构复杂、多状态的特点。如高分辨率对地观测系统卫星部件的失效会造成系统性能的降低以及系统完成任务能力的降低而不是整个系统的失效或任务的失败。如果利用传统可靠性分析方法对其分析很难对系统的多状态进行定义进而难以准确地描述系统性能降低或失效的内在原因。</p>
+            
+            <p>回顾可靠性的概念：</p>
+            <blockquote>
+                可靠性：产品在规定条件下和规定时间内，完成规定功能的能力。
+            </blockquote>
+            
+            <p>根据这个概念，可以这样理解，系统可靠性和系统性能是密切相关的。当系统性能足以完成任务时，系统可靠，反之则不可靠。而系统性能是和部件性能直接关联的。部件性能的降低会导致系统性能的降低，进而导致系统可靠性的降低，故部件性能是分析系统可靠性的前提。</p>
+            
+            <p><strong>更严格地，我们可以建立如下关系</strong>：</p>
+            <ul>
+                <li><strong>部件可靠性</strong>：$R_C(t) = P(P_C(t) \geq P_C^T)$ —— 部件性能在时刻$t$超过阈值的概率</li>
+                <li><strong>系统可靠性</strong>：$R_S(t) = P(P_S(t) \geq P_S^T)$ —— 系统性能在时刻$t$超过阈值的概率</li>
+                <li><strong>性能关联性</strong>：$P_S(t) = f(P_{C_1}(t), P_{C_2}(t), ..., P_{C_n}(t))$</li>
+            </ul>
+            
+            <p>这种描述方式明确了三个关键要素：<strong>性能的时变性</strong>、<strong>阈值的存在性</strong>、<strong>可靠性的概率本质</strong>。</p>
+            
+            <p>基于二元状态的部件可靠性及系统可靠性分析方法并不能体现出部件性能与系统性能的关系，也不能体现出系统可靠性与系统性能的关系。归根结底，是因为没有引入"性能"的概念，而是采用"一刀切"的方式。</p>
+            
+            <p>如下图所示，如果部件$C$只有一个性能（后面还会提到多性能），当性能$P_C$在可接受阈值$P_{C}^T$之上，认为仍处于工作状态（1），当性能下降到可接受阈值$P_{C}^T$之下，认为其处于失效状态（0），也就是二态。这对单部件的系统$S$而言，似乎是没问题的，因为此时部件$C$就是整个系统$S$，部件$C$失效，则整个系统$S$失效。</p>
+            
+            <p>现在考虑一个双部件系统$S$，其由两个部件$C_1,C_2$组成，系统性能$P_S = f(P_{C_1},P_{C_2})$，这里我们并不知道函数$f(·)$是什么。<strong>这正是多状态系统可靠性分析面临的核心挑战</strong>：</p>
+            
+            <div class="challenge-list">
+                <ol>
+                    <li><strong>部件性能聚合的不确定性</strong>：不同部件的性能如何组合形成系统性能？是简单的线性叠加、最小值约束，还是更复杂的非线性关系？这需要结合具体系统进行分析。</li>
+                    
+                    <li><strong>系统阈值定义的复杂性</strong>：对于单部件系统，我们可以事先定义好性能阈值$P_C^T$，阈值之上工作，之下失效。但对于多部件组成的系统而言，如果仅仅沿用二态思维，我们将面临一个根本问题：<strong>系统的性能阈值$P_S^T$应该如何确定？</strong></li>
+                    
+                    <li><strong>状态空间的指数增长</strong>：更进一步，我们将看到部件不止有一个性能指标，且具有不同的失效模式。此时，传统的二态假设将完全失效，系统的状态空间将呈指数级增长。</li>
+                </ol>
+            </div>
+            
+            <img src="2025-07-15/twoStateComponentPeformance.png" alt="Single Performance Two State Component" style="display: block; margin: 20px auto;">
+            
+        </article>
+        
+        <a href="../blog.html" class="nav-link">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+        </a>
+    </div>
+</body>
+</html>
